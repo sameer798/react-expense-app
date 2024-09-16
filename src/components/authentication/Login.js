@@ -1,12 +1,17 @@
 import React, { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import authContext from "../../store/auth-context/auth-context";
 // import Modal from "../modal/Modal";
 
 // const key = AIzaSyBpQzti02j9pRYewe_6aVXcVTcuxoDsuxI;
 const Login = () => {
-
+  const navigate = useNavigate();
+const authCtx = useContext(authContext)
     
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+ 
 
 
   const submitHandler = async(e) => {
@@ -26,9 +31,16 @@ const Login = () => {
                 "Content-type": "application/json"
             }
         })
-        console.log("R", response)
+    
         const data = await response.json();
-        console.log(data)
+        // console.log(data, email)
+        if(response.ok){
+          authCtx.addUserAuth(data.idToken, data.email)
+          navigate('/profile')
+        }
+       
+        
+        // console.log(data.localId, data.email)
     } catch (error) {
         
     }
@@ -75,7 +87,7 @@ const Login = () => {
           </button>
         </form>
         <div className="flex justify-end hover:text-gray-700">
-          <button className="mt-2 ">Don't have an acoount? SignUp</button>
+          <Link to="/signup"><div className="mt-2 ">Don't have an acoount? SignUp</div></Link>
         </div>
       </div>
     </div>

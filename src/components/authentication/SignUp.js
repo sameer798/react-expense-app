@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Modal from "../modal/Modal";
+import { Link } from "react-router-dom";
 
 // const key = AIzaSyBpQzti02j9pRYewe_6aVXcVTcuxoDsuxI;
 const SignUp = () => {
@@ -116,7 +117,7 @@ const SignUp = () => {
           </button>
         </form>
         <div className="flex justify-end hover:text-gray-700">
-          <button className="mt-2 ">Have an acoount? Login</button>
+          <Link to='/'><div className="mt-2 ">Have an acoount? Login</div></Link>
         </div>
       </div>
     </div>

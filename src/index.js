@@ -1,13 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Route, RouterProvider, createBrowserRouter, createRoutesFromElements} from "react-router-dom";
+import Login from './components/authentication/Login';
+import SignUp from './components/authentication/SignUp';
+import AuthContextProvider from './store/auth-context/AuthContextProvider';
+import UserProfile from './components/pages/UserProfile';
+import ProtectedRoute from './route/ProtectedRoute'
+import UpdateProfile from './components/pages/UpdateProfile';
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' >
+    
+      <Route path='' element={<Login/>}/>
+      <Route path='signup' element={<SignUp/>}/>
+      <Route path='profile' element={<ProtectedRoute><UserProfile/></ProtectedRoute>}/>
+      <Route path='update-profile' element={<ProtectedRoute><UpdateProfile/></ProtectedRoute>}/>
+     
+    </Route>
+  )
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+  <AuthContextProvider>
+    <RouterProvider router={router}/>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 
