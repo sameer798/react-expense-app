@@ -65,9 +65,41 @@ const authCtx = useContext(authContext);
     }
     
   }
+
+
+
+const emailVarifyHandler =async()=>{
+  try {
+    const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=AIzaSyBpQzti02j9pRYewe_6aVXcVTcuxoDsuxI',{
+      method: 'POST',
+      body:JSON.stringify({
+        requestType: "VERIFY_EMAIL",
+        idToken : authCtx.token
+      }),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    })
+
+    // const data = await response.json()
+    // console.log(response)
+    if(response.ok){
+      alert("successfully sent to your registered email go to Gmail")
+    }
+    if(!response.ok){
+      throw new Error("INVALID_ID_TOKEN: The user's credential is no longer valid. The user must sign in again.")
+    }
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+
   return (
     <>
-      <div className="p-5 bg-green-300 border-b-4"></div>
+      <div className="p-5 bg-green-300 border-b-4">
+        <button className="bg-gray-400 p-1 rounded-sm text-white hover:bg-gray-500" onClick={emailVarifyHandler}>verify Email</button>
+      </div>
       <div className=" max-w-5xl ml-auto mt-5 border-b-2 border-green-300 py-2">
         <div className="flex justify-between p-3">
           <h2 className="font-bold">Contact Details</h2>
