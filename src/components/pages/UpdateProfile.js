@@ -1,4 +1,5 @@
 import React,{useRef, useContext, useEffect} from "react";
+import {Link} from 'react-router-dom'
 import authContext from '../../store/auth-context/auth-context';
 
 
@@ -97,8 +98,9 @@ const emailVarifyHandler =async()=>{
 
   return (
     <>
-      <div className="p-5 bg-green-300 border-b-4">
+      <div className="p-5 bg-green-300 border-b-4 flex justify-between">
         <button className="bg-gray-400 p-1 rounded-sm text-white hover:bg-gray-500" onClick={emailVarifyHandler}>verify Email</button>
+        <Link to="/"><button className="bg-gray-400 p-1 rounded-sm text-white hover:bg-gray-500">Logout</button></Link>
       </div>
       <div className=" max-w-5xl ml-auto mt-5 border-b-2 border-green-300 py-2">
         <div className="flex justify-between p-3">
