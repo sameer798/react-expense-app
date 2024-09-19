@@ -1,4 +1,4 @@
-import React,{useRef, useContext} from "react";
+import React,{useRef, useContext, useEffect} from "react";
 import authContext from '../../store/auth-context/auth-context';
 
 
@@ -7,6 +7,31 @@ const authCtx = useContext(authContext);
 
   const nameInputRef = useRef();
   const urlInputRef = useRef();
+
+  useEffect(()=>{
+    getData()
+  },[])
+
+  const getData = async()=>{
+    try {
+      const response = await fetch('https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBpQzti02j9pRYewe_6aVXcVTcuxoDsuxI',{
+        method: 'POST',
+        body:JSON.stringify({
+          idToken: authCtx.token
+        })
+      });
+      const data = await response.json();
+      console.log(data.users[0].displayName)
+      console.log(data.users[0].photoUrl)
+      // console.log(response)
+      nameInputRef.current.value = data.users[0].displayName;
+      urlInputRef.current.value = data.users[0].photoUrl
+
+    } catch (error) {
+      
+    }
+
+  }
 
   const updateHandler = async()=>{
     const user_name = nameInputRef.current.value;
@@ -90,7 +115,7 @@ const authCtx = useContext(authContext);
               />
             </svg>
             <label className="ml-2 font-medium ">Profile Photo URL:</label>
-            <input className="ml-2 h-5 rounded border border-gray-500" type="text" ref={urlInputRef}/>
+            <input className="ml-2 h-7 rounded border border-gray-500 " type="text" ref={urlInputRef}/>
           </div>
         </div>
         <div>
