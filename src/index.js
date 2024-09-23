@@ -10,6 +10,7 @@ import AuthContextProvider from './store/auth-context/AuthContextProvider';
 import UserProfile from './components/pages/UserProfile';
 import ProtectedRoute from './route/ProtectedRoute'
 import UpdateProfile from './components/pages/UpdateProfile';
+import ForgotPassword from './ForgotPassword';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path='signup' element={<SignUp/>}/>
       <Route path='profile' element={<ProtectedRoute><UserProfile/></ProtectedRoute>}/>
       <Route path='update-profile' element={<ProtectedRoute><UpdateProfile/></ProtectedRoute>}/>
+      <Route path='forgot-password' element={<ForgotPassword/>}/>
      
     </Route>
   )

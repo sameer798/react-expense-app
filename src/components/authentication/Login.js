@@ -79,6 +79,7 @@ const authCtx = useContext(authContext)
               className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-pink-500"
             />
           </div>
+          <Link to='/forgot-password'><button>Forgot password?</button></Link>
           <button
             type="submit"
             className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white p-2 rounded hover:bg-gradient-to-l focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
