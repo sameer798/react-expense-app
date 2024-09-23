@@ -11,6 +11,7 @@ import UserProfile from './components/pages/UserProfile';
 import ProtectedRoute from './route/ProtectedRoute'
 import UpdateProfile from './components/pages/UpdateProfile';
 import ForgotPassword from './ForgotPassword';
+import NewExpense from './components/expenses/NewExpense';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route path='signup' element={<SignUp/>}/>
       <Route path='profile' element={<ProtectedRoute><UserProfile/></ProtectedRoute>}/>
       <Route path='update-profile' element={<ProtectedRoute><UpdateProfile/></ProtectedRoute>}/>
+      <Route path='new-expense' element={<ProtectedRoute><NewExpense/></ProtectedRoute>}/>
       <Route path='forgot-password' element={<ForgotPassword/>}/>
      
     </Route>

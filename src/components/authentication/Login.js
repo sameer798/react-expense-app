@@ -36,7 +36,7 @@ const authCtx = useContext(authContext)
         // console.log(data, email)
         if(response.ok){
           authCtx.addUserAuth(data.idToken, data.email)
-          navigate('/profile')
+          navigate('/new-expense')
         }
        
         
