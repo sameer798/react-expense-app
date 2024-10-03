@@ -69,7 +69,7 @@ function NewExpense() {
     //   console.log(data);
 
     // if (response.ok) {
-    //     // Update the local state by adding the new expense
+        // Update the local state by adding the new expense
     //     setNewExpense((prevExpense) => [
     //       ...prevExpense,
     //       { id: data.name, ...newExpenseData }, 
